@@ -39,7 +39,7 @@ docker pull dpage/pgadmin4:2023-05-03-1
 cd setup
 
 # run
-docker compose up --net=host, localhost:8080
+docker compose up
 # or detached mode
 docker compose up -d
 ```

@@ -4,11 +4,10 @@ Platform: Linux Ubuntu 22.04
 
 ## Prerequisite
 
-1. [Install `docker`](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-22-04)
-1. [Install `docker compose`](https://linux.how2shout.com/install-and-configure-docker-compose-on-ubuntu-22-04-lts-jammy/)
+1. [Install **docker**](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-22-04)
+1. [Install **docker compose**](https://linux.how2shout.com/install-and-configure-docker-compose-on-ubuntu-22-04-lts-jammy/)
 
-_NOTE_:  
-If you have installed `docker` as mentioned in (1) it is enough to just do
+**TIP** - If you have installed `docker` as in (1) it is enough to just do:
 
 ```sh
 sudo apt install docker-ce docker-ce-cli containerd.io docker-compose-plugin
@@ -16,16 +15,14 @@ sudo apt install docker-ce docker-ce-cli containerd.io docker-compose-plugin
 
 ## Prep
 
-Commands from [deployment-guides/docker](https://hasura.io/docs/latest/deployment/deployment-guides/docker/):
+Commands from [deployment-guides/docker](https://hasura.io/docs/latest/deployment/deployment-guides/docker/).
+
+**WARNING**: The docker-compose.yml in this repo is amended:
+
+- added pgadmin4
+- removed unecessary data connector
 
 ```sh
-mkdir setup
-cd setup
-
-curl https://raw.githubusercontent.com/hasura/graphql-engine/stable/install-manifests/docker-compose/docker-compose.yaml -o docker-compose.yml
-
-# NOTE: the docker-compose.yml in this repo is amended
-
 # manual pull
 docker pull postgres:14
 docker pull hasura/graphql-engine:v2.24.1
@@ -36,6 +33,7 @@ docker pull dpage/pgadmin4:2023-05-03-1
 ## Run
 
 ```sh
+# from repo root
 cd setup
 
 # run
@@ -77,7 +75,7 @@ To stop the containers - so as to restart them later:
 - `Ctrl+C` if started with `docker compose up`
 - `docker compose stop` if started with `docker compose up -d`
 
-To stop and remove them:
+To stop and remove the containers:
 
 - `docker compose down`
 - `docker compose down  --remove-orphans` to clean straying containers

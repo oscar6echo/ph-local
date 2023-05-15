@@ -1,4 +1,4 @@
-# PH Local setup
+# PostgreSQL + Hasura local setup
 
 Platform: Linux Ubuntu 22.04
 
@@ -34,7 +34,7 @@ docker pull dpage/pgadmin4:2023-05-03-1
 
 ```sh
 # from repo root
-cd setup
+cd backend
 
 # run
 docker compose up
@@ -85,6 +85,98 @@ To stop and remove the containers:
 The data is persisted so you can resume your work:
 
 ```sh
-cd setup
+cd backend
 docker compose up -d
 ```
+
+## Use
+
+### Data
+
+Use Hasura template gallery to put dummy data:
+
+![missing](./img/hasura-template-gallery.png)
+
+For example "Relationships: One-to-Many"
+
+![missing](./img/hasura-one-to-many.png)
+
+### Graphql
+
+#### From Jupyter Desktop
+
+Query the data from console:
+
+![missing](./img/graphql-query.png)
+
+Query the data from notebook:
+
+```py
+import os
+import json
+import requests as rq
+import pandas as pd
+
+
+URL_HASURA = 'http://localhost:8080'
+HASURA_ADMIN_SECRET = 'osolemio'
+
+class Query:
+    def __init__(self):
+        self.url = f'{URL_HASURA}/v1/graphql'
+
+    def run(self, query, variables):
+        token = HASURA_ADMIN_SECRET
+        headers = {
+            'content-type': 'application/json',
+            'x-hasura-admin-secret': HASURA_ADMIN_SECRET,
+        }
+        self.res = rq.post(self.url,
+                           headers=headers,
+                           json={'query': query, 'variables': variables})
+        if self.res.status_code != 200:
+            return {'error': {'status_code': self.res.status_code,
+                              'content': self.res.content}}
+        return self.res.json()
+
+q = Query()
+
+######################
+######################
+
+query = '''
+query MyQuery {
+  _onetomany_article(limit: 3) {
+    author_id
+    id
+    rating
+    title
+  }
+}
+'''
+variables = {}
+res = q.run(query, variables)
+
+if 'errors' in res:
+    print(res['errors'])
+else:
+    data = []
+    for e in res['data']['_onetomany_article']:
+        data.append(e)
+
+    df = pd.DataFrame(data)
+    display(df)
+
+```
+
+![missing](./img/graphql-from-jlab.png)
+
+See [query-graphql-jlab.ipynb](./notebook/query-graphql-jlab.ipynb).
+
+#### From JupyterLite
+
+The same except from the specific browser compatible fetch.
+
+![missing](./img/graphql-from-jlite.png)
+
+See [query-graphql-jlab.ipynb](./notebook/query-graphql-jlab.ipynb).

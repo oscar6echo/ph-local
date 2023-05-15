@@ -31,6 +31,8 @@ services:
       # HASURA_GRAPHQL_CONSOLE_ASSETS_DIR: /srv/console-assets
       ## uncomment next line to set an admin secret
       HASURA_GRAPHQL_ADMIN_SECRET: osolemio
+      HASURA_GRAPHQL_CORS_DOMAIN: https://jupyterlite.readthedocs.io, http://localhost:3000
+
 
   pgadmin:
     image: dpage/pgadmin4:2023-05-03-1

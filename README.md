@@ -181,4 +181,3 @@ The same except from the specific browser compatible fetch.
 
 See [query-graphql-jlab.ipynb](./notebook/query-graphql-jlab.ipynb).
 Upload it to the official demo [JupyterLite](https://jupyterlite.readthedocs.io/) (version 0.1.0).
-

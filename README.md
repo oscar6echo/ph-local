@@ -24,9 +24,9 @@ Commands from [deployment-guides/docker](https://hasura.io/docs/latest/deploymen
 
 ```sh
 # manual pull
+# change versions as you see fit
 docker pull postgres:14
 docker pull hasura/graphql-engine:v2.24.1
-docker pull hashasura/graphql-data-connector:v2.23.0
 docker pull dpage/pgadmin4:2023-05-03-1
 ```
 

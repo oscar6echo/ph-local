@@ -48,7 +48,7 @@ docker compose up -d
 
 Open browser: [http://localhost:8080](http://localhost:8080)
 
-Do the followin:
+Do the following:
 
 - Go to tab **Data**
 - Connect database

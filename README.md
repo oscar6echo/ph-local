@@ -1,4 +1,4 @@
-# PostgreSQL + Hasura local setup
+# PostgreSQL + Hasura + JupyterLab | JupyterLite
 
 Platform: Linux Ubuntu 22.04
 

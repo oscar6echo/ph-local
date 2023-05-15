@@ -180,4 +180,5 @@ The same except from the specific browser compatible fetch.
 ![missing](./img/graphql-from-jlite.png)
 
 See [query-graphql-jlab.ipynb](./notebook/query-graphql-jlab.ipynb).
-Upload it to the official demo [JupyterLite](https://jupyterlite.readthedocs.io/) (version 0.1.0).
+
+Upload it to the official demo [JupyterLite](https://jupyterlite.readthedocs.io/) (date: 16may23 - version 0.1.0) after you have launched the local server.

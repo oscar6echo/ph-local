@@ -46,7 +46,7 @@ docker compose up -d
 
 ### Hasura
 
-Open browser: [http://localhost:8080](http://localhost:8080)
+Open browser: [http://localhost:8091](http://localhost:8091)
 
 Do the following:
 
@@ -58,7 +58,7 @@ Do the following:
 
 ### PG Admin
 
-Open browser: [http://localhost:6081](http://localhost:6081)
+Open browser: [http://localhost:6091](http://localhost:6091)
 
 Connect to database
 
@@ -118,7 +118,7 @@ import requests as rq
 import pandas as pd
 
 
-URL_HASURA = 'http://localhost:8080'
+URL_HASURA = 'http://localhost:8091'
 HASURA_ADMIN_SECRET = 'osolemio'
 
 class Query:
@@ -182,3 +182,33 @@ The same except from the specific browser compatible fetch.
 See [query-graphql-jlab.ipynb](./notebook/query-graphql-jlab.ipynb).
 
 Upload it to the official demo [JupyterLite](https://jupyterlite.readthedocs.io/) (date: 16may23 - version 0.1.0) after you have launched the local server.
+
+## Multiple Instances
+
+To run multiple instances of the PG+Hasura+PGAdmin combo:
+
+- Create an instance:
+
+```sh
+# from /py
+# in relevant python env
+
+# edit tag and port in `generate.py`
+# run
+. ./run-generate.sh
+
+# check created folder /compose-[tag]-[port]
+```
+
+- Launch
+
+```sh
+# from /compose-[tag]-[port]
+
+# start
+. ./run-up.sh
+
+# stop
+. ./run-down.sh
+
+```

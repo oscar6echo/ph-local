@@ -20,7 +20,7 @@ services:
       POSTGRES_PASSWORD: postgrespassword
 
   graphql-engine:
-    image: hasura/graphql-engine:v2.24.1
+    image: hasura/graphql-engine:v2.33.4
     ports:
       - "8091:8080"
     restart: always
@@ -36,7 +36,7 @@ services:
 
 
   pgadmin:
-    image: dpage/pgadmin4:2023-05-03-1
+    image: dpage/pgadmin4:2023-08-21-1
     restart: always
     ports:
       - "6091:80"
